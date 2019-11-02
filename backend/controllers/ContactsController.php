@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ContactsController implements the CRUD actions for Contact model.
+ * ContactsController implements the CRUD actions for Contacts model.
  */
 class ContactsController extends Controller
 {
@@ -30,12 +30,12 @@ class ContactsController extends Controller
     }
 
     /**
-     * Lists all Contact models.
+     * Lists all Contacts models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ContactSearch();
+        $searchModel = new ContactsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ContactsController extends Controller
     }
 
     /**
-     * Displays a single Contact model.
+     * Displays a single Contacts model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class ContactsController extends Controller
     }
 
     /**
-     * Creates a new Contact model.
+     * Creates a new Contacts model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Contact();
+        $model = new Contacts();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class ContactsController extends Controller
     }
 
     /**
-     * Updates an existing Contact model.
+     * Updates an existing Contacts model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class ContactsController extends Controller
     }
 
     /**
-     * Deletes an existing Contact model.
+     * Deletes an existing Contacts model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -113,7 +113,7 @@ class ContactsController extends Controller
      * Finds the Contact model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Contact the loaded model
+     * @return Contacts the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

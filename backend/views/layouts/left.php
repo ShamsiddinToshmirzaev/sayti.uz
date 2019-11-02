@@ -36,7 +36,7 @@
 {label}<span class="pull-right-container"><small class="label pull-right">' . \backend\models\Tags::find()->count() . '</small></span></a>'],
                     ['label' => 'Contacts', 'icon' => 'th-list', 'url' => ['/contacts/index'], 'template' => '<a href="{url}">{icon} {label}
 <span class="pull-right-container"><small class="label pull-right bg-blue">'
-                        . \backend\models\Contact::find()->count() . '</small></span></a>'],
+                        . \backend\models\Contacts::find()->count() . '</small></span></a>'],
 
                 ],
             ]

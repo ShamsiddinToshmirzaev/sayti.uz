@@ -40,7 +40,7 @@ class ContactsSearch extends Contacts
      */
     public function search($params)
     {
-        $query = Contact::find();
+        $query = Contacts::find();
 
         // add conditions that should always apply here
 
