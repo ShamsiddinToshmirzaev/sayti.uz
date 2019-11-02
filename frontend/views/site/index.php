@@ -258,146 +258,144 @@ use yii\widgets\LinkPager;
 
 
 <?php
-//
-//function getRealIpAddr()
-//{
-//    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-//    {
-//        $ip=$_SERVER['HTTP_CLIENT_IP'];
-//    }
-//    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-//    {
-//        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-//    }
-//    else
-//    {
-//        $ip=$_SERVER['REMOTE_ADDR'];
-//    }
-//    return $ip;
-//}
-//
-//print getRealIpAddr();
-//
-//
-//?>
-<!---->
-<!---->
+
+function getRealIpAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+    {
+        $ip=$_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+    {
+        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    else
+    {
+        $ip=$_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+print getRealIpAddr();
+
+
+?>
+
 <?php
-//
-//function getIp() {
-//    $ip = $_SERVER['REMOTE_ADDR'];
-//
-//    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-//        $ip = $_SERVER['HTTP_CLIENT_IP'];
-//    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-//        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-//    }
-//
-//    return $ip;
-//}
-//
-//print  getIp();
-//
-//
-//?>
+
+function getIp() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+
+    return $ip;
+}
+
+print  getIp();
+
+
+?>
 
 
 <!--Getting IP address, city , Internet provider -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-<!--<script>-->
-<!--    $.ajax({-->
-<!--        type: "GET",-->
-<!--        dataType: "json",-->
-<!--        url: "http://ip-api.com/json?callback=?",-->
-<!--        success: function (responseData) {-->
-<!--            // alert(responseData["isp"]);-->
-<!--            document.getElementById("datas").innerHTML = responseData.query;-->
-<!--            document.getElementById("city").innerHTML = responseData.country + ", " + responseData.city;-->
-<!--            document.getElementById("isp").innerHTML = responseData.isp;-->
-<!--        }-->
-<!---->
-<!--    });-->
-<!--</script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "http://ip-api.com/json?callback=?",
+        success: function (responseData) {
+            // alert(responseData["isp"]);
+            document.getElementById("datas").innerHTML = responseData.query;
+            document.getElementById("city").innerHTML = responseData.country + ", " + responseData.city;
+            document.getElementById("isp").innerHTML = responseData.isp;
+        }
+
+    });
+</script>
 
 
 <!-- Finding Operating System of a given Computer -->
-<!--<script>-->
-<!---->
-<!--    var OSName = "Unknown OS";-->
-<!--    if (navigator.appVersion.indexOf("Win") !== -1) OSName = "Windows";-->
-<!--    if (navigator.appVersion.indexOf("Mac") !== -1) OSName = "MacOS";-->
-<!--    if (navigator.appVersion.indexOf("X11") !== -1) OSName = "UNIX";-->
-<!--    if (navigator.appVersion.indexOf("Linux") !== -1) OSName = "Linux";-->
-<!--    document.getElementById("os").innerHTML = OSName;-->
-<!---->
-<!--</script>-->
+<script>
+    var OSName = "Unknown OS";
+    if (navigator.appVersion.indexOf("Win") !== -1) OSName = "Windows";
+    if (navigator.appVersion.indexOf("Mac") !== -1) OSName = "MacOS";
+    if (navigator.appVersion.indexOf("X11") !== -1) OSName = "UNIX";
+    if (navigator.appVersion.indexOf("Linux") !== -1) OSName = "Linux";
+    document.getElementById("os").innerHTML = OSName;
+
+</script>
 
 
 <!--getting browser name and version -->
-<!--<script>-->
-<!--    var nVer = navigator.appVersion;-->
-<!--    var nAgt = navigator.userAgent;-->
-<!--    var browserName = navigator.appName;-->
-<!--    var fullVersion = '' + parseFloat(navigator.appVersion);-->
-<!--    var nameOffset, verOffset, ix;-->
-<!---->
-<!--    // In Opera 15+, the true version is after "OPR/"-->
-<!--    if ((verOffset = nAgt.indexOf("OPR/")) != -1) {-->
-<!--        browserName = "Opera";-->
-<!--        fullVersion = nAgt.substring(verOffset + 4);-->
-<!--    }-->
-<!--// In older Opera, the true version is after "Opera" or after "Version"-->
-<!--    else if ((verOffset = nAgt.indexOf("Opera")) != -1) {-->
-<!--        browserName = "Opera";-->
-<!--        fullVersion = nAgt.substring(verOffset + 6);-->
-<!--        if ((verOffset = nAgt.indexOf("Version")) != -1)-->
-<!--            fullVersion = nAgt.substring(verOffset + 8);-->
-<!--    }-->
-<!--// In MSIE, the true version is after "MSIE" in userAgent-->
-<!--    else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {-->
-<!--        browserName = "Microsoft Internet Explorer";-->
-<!--        fullVersion = nAgt.substring(verOffset + 5);-->
-<!--    }-->
-<!--// In Chrome, the true version is after "Chrome"-->
-<!--    else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {-->
-<!--        browserName = "Chrome";-->
-<!--        fullVersion = nAgt.substring(verOffset + 7);-->
-<!--    }-->
-<!--// In Safari, the true version is after "Safari" or after "Version"-->
-<!--    else if ((verOffset = nAgt.indexOf("Safari")) != -1) {-->
-<!--        browserName = "Safari";-->
-<!--        fullVersion = nAgt.substring(verOffset + 7);-->
-<!--        if ((verOffset = nAgt.indexOf("Version")) != -1)-->
-<!--            fullVersion = nAgt.substring(verOffset + 8);-->
-<!--    }-->
-<!--// In Firefox, the true version is after "Firefox"-->
-<!--    else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {-->
-<!--        browserName = "Firefox";-->
-<!--        fullVersion = nAgt.substring(verOffset + 8);-->
-<!--    }-->
-<!--// In most other browsers, "name/version" is at the end of userAgent-->
-<!--    else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) <-->
-<!--        (verOffset = nAgt.lastIndexOf('/'))) {-->
-<!--        browserName = nAgt.substring(nameOffset, verOffset);-->
-<!--        fullVersion = nAgt.substring(verOffset + 1);-->
-<!--        if (browserName.toLowerCase() == browserName.toUpperCase()) {-->
-<!--            browserName = navigator.appName;-->
-<!--        }-->
-<!--    }-->
-<!--    // trim the fullVersion string at semicolon/space if present-->
-<!--    if ((ix = fullVersion.indexOf(";")) != -1)-->
-<!--        fullVersion = fullVersion.substring(0, ix);-->
-<!--    if ((ix = fullVersion.indexOf(" ")) != -1)-->
-<!--        fullVersion = fullVersion.substring(0, ix);-->
-<!---->
-<!--    majorVersion = parseInt('' + fullVersion, 10);-->
-<!--    if (isNaN(majorVersion)) {-->
-<!--        fullVersion = '' + parseFloat(navigator.appVersion);-->
-<!--        majorVersion = parseInt(navigator.appVersion, 10);-->
-<!--    }-->
-<!--    document.getElementById('browser').innerHTML = browserName + "  " + fullVersion;-->
-<!---->
-<!--</script>-->
+<script>
+    var nVer = navigator.appVersion;
+    var nAgt = navigator.userAgent;
+    var browserName = navigator.appName;
+    var fullVersion = '' + parseFloat(navigator.appVersion);
+    var nameOffset, verOffset, ix;
+
+    // In Opera 15+, the true version is after "OPR/"
+    if ((verOffset = nAgt.indexOf("OPR/")) != -1) {
+        browserName = "Opera";
+        fullVersion = nAgt.substring(verOffset + 4);
+    }
+// In older Opera, the true version is after "Opera" or after "Version"
+    else if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+        browserName = "Opera";
+        fullVersion = nAgt.substring(verOffset + 6);
+        if ((verOffset = nAgt.indexOf("Version")) != -1)
+            fullVersion = nAgt.substring(verOffset + 8);
+    }
+// In MSIE, the true version is after "MSIE" in userAgent
+    else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+        browserName = "Microsoft Internet Explorer";
+        fullVersion = nAgt.substring(verOffset + 5);
+    }
+// In Chrome, the true version is after "Chrome"
+    else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+        browserName = "Chrome";
+        fullVersion = nAgt.substring(verOffset + 7);
+    }
+// In Safari, the true version is after "Safari" or after "Version"
+    else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+        browserName = "Safari";
+        fullVersion = nAgt.substring(verOffset + 7);
+        if ((verOffset = nAgt.indexOf("Version")) != -1)
+            fullVersion = nAgt.substring(verOffset + 8);
+    }
+// In Firefox, the true version is after "Firefox"
+    else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
+        browserName = "Firefox";
+        fullVersion = nAgt.substring(verOffset + 8);
+    }
+// In most other browsers, "name/version" is at the end of userAgent
+    else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) <
+        (verOffset = nAgt.lastIndexOf('/'))) {
+        browserName = nAgt.substring(nameOffset, verOffset);
+        fullVersion = nAgt.substring(verOffset + 1);
+        if (browserName.toLowerCase() == browserName.toUpperCase()) {
+            browserName = navigator.appName;
+        }
+    }
+    // trim the fullVersion string at semicolon/space if present
+    if ((ix = fullVersion.indexOf(";")) != -1)
+        fullVersion = fullVersion.substring(0, ix);
+    if ((ix = fullVersion.indexOf(" ")) != -1)
+        fullVersion = fullVersion.substring(0, ix);
+
+    majorVersion = parseInt('' + fullVersion, 10);
+    if (isNaN(majorVersion)) {
+        fullVersion = '' + parseFloat(navigator.appVersion);
+        majorVersion = parseInt(navigator.appVersion, 10);
+    }
+    document.getElementById('browser').innerHTML = browserName + "  " + fullVersion;
+
+</script>
 
 
 
