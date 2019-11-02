@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw'
             ],
             'is_taxis',
-            'is_new',
 //
 //            [
 //                'attribute' => 'status',

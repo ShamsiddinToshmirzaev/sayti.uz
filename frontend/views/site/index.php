@@ -106,11 +106,6 @@ use yii\widgets\LinkPager;
                     <?php foreach ($provider->getModels() as $site): ?>
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
-                                <?php
-                                if ($site['is_new'] == true){
-                                    echo '<div class="new"><p> Новый</p></div>';
-                                }
-                                ?>
                                 <img src="<?= $site->getThumbFileUrl('photo', 'md', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]')) ;?>" alt="">
                                 <div class="card-body">
                                     <p><?= $site['title'] ?></p>

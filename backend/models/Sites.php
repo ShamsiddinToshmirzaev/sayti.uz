@@ -9,18 +9,18 @@ use yii\helpers\ArrayHelper;
 use yiidreamteam\upload\ImageUploadBehavior;
 
 /**
- * This is the model class for table "sites".
+ * This is the model class for table "sites"
  *
  * @property int $id
  * @property string $title
  * @property int $views
  * @property int $is_taxis
- * @property int $is_new
  * @property string $photo
  * @property int $created_at
  * @property int $updated_at
  * @property int $created_by
  * @property int $updated_by
+ * @property int $parsed_at
  * @property int $status
  */
 class Sites extends \yii\db\ActiveRecord
@@ -39,7 +39,7 @@ class Sites extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'views', 'photo', 'is_taxis', 'is_new'], 'required'],
+            [['title', 'views', 'photo', 'is_taxis'], 'required'],
             ['photo', 'image', 'maxSize' => 1024 * 1024 * 10],
 
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
@@ -72,12 +72,14 @@ class Sites extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'views' => Yii::t('app', 'Views'),
             'is_taxis' => Yii::t('app', 'Is_Taxis'),
-            'is_new' => Yii::t('app', 'Is_New'),
             'photo' => Yii::t('app', 'Photo'),
+            'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'created_by' => Yii::t('app', 'Created By'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'updated_by' => Yii::t('app', 'Updated By'),
+            'parsed_at' => Yii::t('app', 'Parsed At'),
+
         ];
     }
 

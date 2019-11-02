@@ -42,9 +42,8 @@ use backend\models\Sites;
         <div class="col-sm-6">
             <?= $form->field($model, 'title')->textInput() ?>
             <?= $form->field($model, 'is_taxis')->textInput() ?>
-            <?= $form->field($model, 'is_new')->textInput() ?>
             <?= $form->field($model, 'views')->textInput() ?>
-<!-- $form->field($model, 'status')->dropDownList($model::statusList()) -->
+
         </div>
     </div>
 
