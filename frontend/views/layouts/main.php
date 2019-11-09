@@ -78,23 +78,6 @@ AppAsset::register($this);
     <!-- end of navbar -->
 
 
-
-    <div class="container">
-        <!--                <li><a href="/">Asosiy</a></li>-->
-        <!--                <li class="active">Davlat test markazi faoliyati to‘g‘risidagi axborot</li>-->
-        <ul class="breadcrumb">
-            <?= \yii\widgets\Breadcrumbs::widget([
-//                    'tag' => 'div',
-//                    'options' => ['class' => ''],
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-//                    'activeItemTemplate' => "<span><span>{link}</span></span>\n",
-//                    'itemTemplate' => "<span>{link}</span>\n",
-            ]) ?>
-        </ul>
-
-    </div>
-
-
     <!-- content -->
     <div class="content print">
         <!--        --><?php //= Alert::widget() ?>

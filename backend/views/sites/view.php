@@ -23,14 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-<!--    --><?//= DetailView::widget([
-//        'model' => $model,
-//        'attributes' => [
-//            'created_by.username',
-//            'created_at:datetime',
-//            'updated_at:datetime',
-//        ],
-//    ]) ?>
+<!--//= DetailView::widget([-->
+<!--//        'model' => $model,-->
+<!--//        'attributes' => [-->
+<!--//            'created_by.username',-->
+<!--//            'created_at:datetime',-->
+<!--//            'updated_at:datetime',-->
+<!--//        ],-->
+<!--//    ]) -->
 
     <div class="row">
         <div class="col-sm-4">

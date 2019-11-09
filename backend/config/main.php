@@ -1,4 +1,7 @@
 <?php
+
+use yii\filters\AccessControl;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -16,6 +19,14 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@backend/views' => '@backend/views/yii2-app'
+                ],
+            ],
+        ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -46,5 +57,16 @@ return [
         ],
         */
     ],
+    'as access' => [
+        'class' => AccessControl::class,
+        'except' => ['site/login', 'site/error', 'site/logout', 'site/signup'],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@']
+            ],
+        ],
+    ],
+
     'params' => $params,
 ];

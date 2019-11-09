@@ -3,15 +3,11 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 
-/* @var $model backend\models\Contact */
+/* @var $model backend\models\Contacts */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
-
-//$this->title = 'Contact';
-//$this->params['breadcrumbs'][] = $this->title;
-
 
 use backend\models\Contact;
 use frontend\assets\ContactsAsset;
@@ -19,60 +15,42 @@ use frontend\models\Lang;
 //use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = Yii::t('app', 'Contacts');
-//Yii::$app->params['sub-title'] = Yii::t('app', 'Contacts');
-//$this->params['breadcrumbs'][] = ['label' => $this->title];
-
-
-//$l = Lang::getCurrent();
-//$text = 'text_' . $l->url;
-//$title = 'title_' . $l->url;
-//$this->title = 'ad';
-//$info = ContactInfo::findOne(1);
 ?>
-<?php //= $info->$text ?>
 
 
-<div class="container" style="padding-top: 0px">
-    <?php if (Yii::$app->session->hasFlash('success')): ?>
-        <div style="margin:5px 0 0 0;"
-             class="alert alert-success"><?= Yii::t('app', 'Thank you for contacting us. We will respond to you as soon as possible.') ?></div>
-    <?php elseif (Yii::$app->session->hasFlash('error')): ?>
-        <div style="margin:5px 0 0 0;"
-             class="alert alert-danger"><?= Yii::t('app', 'There was an error sending email.') ?></div>
-    <?php else: ?>
-        <!--<p class="text-muted" style="text-align: left;"><?php //= Yii::$app->params['send-info'] ?></p>-->
-    <?php endif; ?>
-</div>
-
-
-<header>
+<header style="margin-top:70px; background-color: #ffffff;">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 p-sm-0">
-                <nav aria-label="breadcrumb  " style="padding: 8px 5px !important">
+            <div class="col-md-12 p-sm-0" style="">
+                <nav aria-label="breadcrumb  " style="padding: 8px 5px !important; box-shadow: 0px 0px 0px white; ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/"><i class="fas fa-home fa-md"></i></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Контакты</li>
                     </ol>
                 </nav>
             </div>
+            <div class="container" style="padding-top: 0px">
+                <?php if (Yii::$app->session->hasFlash('success')): ?>
+                    <div style="margin:5px 0 0 0;"
+                         class="alert alert-success"><?= Yii::t('app', 'Thank you for contacting us. We will respond to you as soon as possible.') ?></div>
+                <?php elseif (Yii::$app->session->hasFlash('error')): ?>
+                    <div style="margin:5px 0 0 0;"
+                         class="alert alert-danger"><?= Yii::t('app', 'There was an error sending email.') ?></div>
+                <?php else: ?>
+                    <!--<p class="text-muted" style="text-align: left;"><?php //= Yii::$app->params['send-info'] ?></p>-->
+                <?php endif; ?>
+            </div>
             <div class="col-md-12">
                 <h3 class="text-center upperCase">Контакты</h3>
             </div>
             <div class="col-md-12">
-                <h4>Адрес:</h4>
-                <span>Amir Temur Shox ko'chasi</span><br>
-                <h4>Режим работы:</h4>
-                <span>Пн-Пт с 9:00 до 19:00</span><br>
-                <h4>Email:</h4>
-                <span><a href="#">info@sayti.uz</a></span><br>
+                <h4 style="display: inline">Адрес:</h4>
+                <span style="box-sizing: border-box;">Amir Temur Shox ko'chasi</span><br>
+                <h4 style="display: inline">Режим работы:</h4>
+                <span style="box-sizing: border-box;">Пн-Пт с 9:00 до 19:00</span><br>
+                <h4 style="display: inline">Email:</h4>
+                <span style="box-sizing: border-box;"><a href="#">info@sayti.uz</a></span><br>
             </div>
-            <div class="col-md-12">
-                <div id="googleMap"></div>
-            </div>
-
-
         </div>
     </div>
 </header>
@@ -85,12 +63,44 @@ $this->title = Yii::t('app', 'Contacts');
                  border-radius:1px;"></div>
 </div>
 
+
 <section>
-    <div class="container">
+    <div class="container" style="margin-top: 20px;
+    background-color: #F7F7F7; max-width: 100%;">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="text-center upperCase mt-4 mb-4">Обратная связь</h3>
             </div>
+
+            <div class="contacts container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php $form = ActiveForm::begin(); ?>
+
+                        <?= $form->field($model, 'full_name')->textInput() ?>
+
+                        <?= $form->field($model, 'email_phone')->textInput() ?>
+
+                        <?= $form->field($model, 'message')->textArea(array('rows' => 5)) ?>
+
+                        <?=
+                        $form->field($model, 'verifyCode')->label(false)->widget(Captcha::class, ['captchaAction' => 'site/captcha',
+                            'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>',
+                            'options' => ['class' => 'form-control', 'placeholder' => Yii::t('app', 'Verify Code')],
+                        ])
+                        ?>
+
+                        <div class="form-group" style="align-content: center">
+                            <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary pull-center;']) ?>
+                        </div>
+
+                        <?php ActiveForm::end(); ?>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br><br/>
 
             <!--            <div class="col-md-12">-->
             <!--                <form action="">-->
@@ -114,37 +124,6 @@ $this->title = Yii::t('app', 'Contacts');
         </div>
     </div>
 </section>
-
-
-
-<div class="contacts container">
-    <div class="row">
-        <div class="col-md-12">
-            <?php $form = ActiveForm::begin(); ?>
-
-            <?= $form->field($model, 'full_name')->textInput() ?>
-
-            <?= $form->field($model, 'email_phone')->textInput() ?>
-
-            <?= $form->field($model, 'message')->textArea(array('rows' => 5)) ?>
-
-            <?=
-            $form->field($model, 'verifyCode')->label(false)->widget(Captcha::class, ['captchaAction' => 'site/captcha',
-                'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>',
-                'options' => ['class' => 'form-control', 'placeholder' => Yii::t('app', 'Tasdiqlash kodi')],
-            ])
-            ?>
-
-            <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary']) ?>
-            </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-
-    </div>
-</div><br>
-<br><br/>
 
 
 <script type="text/javascript">

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Tags;
 use Yii;
 use backend\models\Sites;
 use backend\models\SitesSearch;
@@ -57,6 +58,26 @@ class SitesController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+//
+//    /**
+//     * Creates a new Sites model.
+//     * If creation is successful, the browser will be redirected to the 'view' page.
+//     * @return mixed
+//     */
+//    public function actionCreate()
+//    {
+//        $model = new Sites();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('create', [
+//            'model' => $model,
+//        ]);
+//    }
+
+
 
     /**
      * Creates a new Sites model.
@@ -65,14 +86,17 @@ class SitesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Sites();
+        $sites = new Sites();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $tags = new Tags();
+
+        if ($sites->load(Yii::$app->request->post()) && $sites->save() && ($tags->load(Yii::$app->request->post()) && $tags->save())) {
+            return $this->redirect(['view', 'id' => $sites->id]);
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'sites' => $sites,
+            'tags' => $tags,
         ]);
     }
 

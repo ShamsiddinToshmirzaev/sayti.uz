@@ -2,28 +2,18 @@
 
 /* @var $this yii\web\View */
 
-
 use backend\models\Tags;
 use backend\models\Sites;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-//$this->title = 'My Yii Application';
 ?>
 
-
-<!--<body>-->
-<!--<form>-->
-<!--    <span id = "ipaddress"></span>-->
-<!--</form>-->
-<!--</body>-->
-
-
-<header>
+<header style="margin-top: 55px">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5  mt-4 mb-4">
-                <div class="square">
+                <div class="square" style="margin-top:1.5rem;">
                     <div class="row">
                         <div class="col-md-4">
                             <i class="fas fa-globe fa-3x d-block mx-auto"></i>
@@ -37,7 +27,7 @@ use yii\widgets\LinkPager;
                 </div>
             </div>
             <div class="col-md-5 offset-md-1  mt-md-4 mt-0 mb-4">
-                <div class="square">
+                <div class="square" style="margin-top:1.5rem;">
                     <div class="row">
                         <div class="col-md-4">
                             <i class="fas fa-robot fa-3x  d-block mx-auto"></i>
@@ -101,20 +91,24 @@ use yii\widgets\LinkPager;
                     </div>
                 </div>
 
+                <!--                getThumbFileUrl('photo', 'md', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]'))-->
+
                 <!--       For  Displaying Sites             -->
                 <div class="row">
                     <?php foreach ($provider->getModels() as $site): ?>
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
-                                <img src="<?= $site->getThumbFileUrl('photo', 'md', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]')) ;?>" alt="">
+                                <img src="<?php $site->getThumbFileUrl('photo', 'md', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]')); ?>"
+                                     alt="">
                                 <div class="card-body">
                                     <p><?= $site['title'] ?></p>
                                     <?php
-                                    if ($site['is_taxis'] == true){
+                                    if ($site['is_taxis'] == true) {
                                         echo ' <span class="tasIx">Tas-IX</span>';
                                     }
                                     ?>
-                                    <span class="float-right counter"><i class="far fa-share-square"></i><?= $site['views'] ?></span>
+                                    <span class="float-right counter"><i
+                                                class="far fa-share-square"></i><?= $site['views'] ?></span>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
@@ -122,21 +116,55 @@ use yii\widgets\LinkPager;
                     <?php endforeach; ?>
 
 
+                    <!--                <table class="table table-condensed table-bordered table-hover">-->
+                    <!---->
+                    <!--                    --><?php
+                    //                    $arr = array();
+                    //                    ?>
+                    <!---->
+                    <!--                    --><?php
+                    //                    foreach ($sites as $site):
+                    //                        ?>
+                    <!--<tr class="active">-->
+                    <!--    <td>-->
+                    <!--        <h4>-->
+                    <!--            --><?php
+                    //            if (!in_array($site['idSites']['title'], $arr)){
+                    //                array_push($arr, $site['idSites']['title']);
+                    //                echo $site['idSites']['title'];
+                    ////                echo $site['idSites']['views'];
+                    ////                echo $site['idSites']['is_taxis'];
+                    //
+                    //
+                    //            }
+                    //            ?>
+                    <!--        </h4>-->
+                    <!--    </td>-->
+                    <!--    <td>-->
+                    <!--        <h4>-->
+                    <!--            --><? //= $site['idTags']['name']  ?>
+                    <!--        </h4>-->
+                    <!--    </td>-->
+                    <!--</tr>-->
+                    <!---->
+                    <!--                    --><?php
+                    //                    endforeach;
+                    //                    ?>
 
 
-
+                    <!--                </table>-->
 
                     <div class="col-md-12">
                         <ul class="pagination justify-content-center">
-                            <!--                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i-->
-                            <!--                                            class="fas fa-chevron-left fa-md"></i></a></li>-->
-                            <?=
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i
+                                            class="fas fa-chevron-left fa-md"></i></a></li>
+                            <?php
                             LinkPager::widget([
                                 'pagination' => $provider->pagination,
                             ])
                             ?>
-                            <!--                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i-->
-                            <!--                                            class="fas fa-chevron-right fa-md"></i></a></li>-->
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i
+                                            class="fas fa-chevron-right fa-md"></i></a></li>
 
                         </ul>
                     </div>
@@ -163,7 +191,7 @@ use yii\widgets\LinkPager;
                         </p>
                         <p class="paragraphSize">
                             Интернет провайдер:
-                            <span id="isp">Не используется</span>
+                            <span id="isp">Не используется
                         </p>
                         <p class="paragraphSize">Прокси:
                             <span>Не используется</span>
@@ -248,34 +276,26 @@ use yii\widgets\LinkPager;
 </section>
 
 
-
-
-
-
+<!--Checking  whether it use proxy or not -->
 <?php
-
-function getRealIpAddr()
+function getUserIP()
 {
-    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-    {
-        $ip=$_SERVER['HTTP_CLIENT_IP'];
+    if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') > 0) {
+            $addr = explode(",", $_SERVER['HTTP_X_FORWARDED_FOR']);
+            return trim($addr[0]);
+        } else {
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+    } else {
+        $message = "No proxy found";
+        echo $message;
+//        return $_SERVER['REMOTE_ADDR'];
     }
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-    {
-        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
-    else
-    {
-        $ip=$_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
 }
 
-print getRealIpAddr();
-
-
+print(getUserIP());
 ?>
-
 
 
 <!--Getting IP address, city , Internet provider -->
@@ -373,7 +393,6 @@ print getRealIpAddr();
     document.getElementById('browser').innerHTML = browserName + "  " + fullVersion;
 
 </script>
-
 
 
 

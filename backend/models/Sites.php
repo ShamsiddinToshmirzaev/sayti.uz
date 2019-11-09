@@ -3,7 +3,9 @@
 namespace backend\models;
 
 use common\models\User;
+use Mpdf\Tag;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yiidreamteam\upload\ImageUploadBehavior;
@@ -81,6 +83,30 @@ class Sites extends \yii\db\ActiveRecord
             'parsed_at' => Yii::t('app', 'Parsed At'),
 
         ];
+    }
+
+//    public function getSites()
+//    {
+//        try {
+//            return $this->hasMany(Sites::class, ['id' => 'site_id'])->viaTable('tags', ['tag_id' => 'id']);
+//        } catch (InvalidConfigException $e) {
+//        }
+//
+//    }
+
+
+//  gettagSites
+
+    public function getTagSites()
+    {
+        return $this->hasMany(TagsAndSites::class, ['site_id' => 'id']);
+
+    }
+
+
+    public function getTags()
+    {
+        return $this->hasMany(Tags::class, ['id' => 'tag_id'])->viaTable('tags_and_sites', ['site_id' => 'id']);
     }
 
     /**

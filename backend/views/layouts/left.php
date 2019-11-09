@@ -31,12 +31,15 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Saytlar', 'icon' => 'th-list', 'url' => ['/sites/index']],
-                    ['label' => 'Taglar', 'icon' => 'bookmark', 'url' => ['/tags/index'], 'template' => '<a href="{url}">{icon} 
+                    ['label' => Yii::t('app','Sites'), 'icon' => 'th-list', 'url' => ['/sites/index']],
+                    ['label' =>  Yii::t('app','Tags'), 'icon' => 'bookmark', 'url' => ['/tags/index'], 'template' => '<a href="{url}">{icon} 
 {label}<span class="pull-right-container"><small class="label pull-right">' . \backend\models\Tags::find()->count() . '</small></span></a>'],
-                    ['label' => 'Contacts', 'icon' => 'th-list', 'url' => ['/contacts/index'], 'template' => '<a href="{url}">{icon} {label}
+                    ['label' =>  Yii::t('app','Contacts'), 'icon' => 'th-list', 'url' => ['/contacts/index'], 'template' => '<a href="{url}">{icon} {label}
 <span class="pull-right-container"><small class="label pull-right bg-blue">'
                         . \backend\models\Contacts::find()->count() . '</small></span></a>'],
+                    ['label' => 'TagsandSites', 'icon' => 'th-list', 'url' => ['/tags-and-sites/index'], 'template' => '<a href="{url}">{icon} {label}
+<span class="pull-right-container"><small class="label pull-right bg-blue">'
+                        . \backend\models\TagsAndSites::find()->count() . '</small></span></a>'],
 
                 ],
             ]

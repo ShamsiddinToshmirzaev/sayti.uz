@@ -54,8 +54,10 @@ class Contacts extends \yii\db\ActiveRecord
             'full_name' => Yii::t('app', 'Full Name'),
             'email_phone' => Yii::t('app', 'Email or Phone'),
             'message' => Yii::t('app', 'Message'),
-//            'contacts' => Yii::t('app','Boʻgʻlanish'),
+            'status' => Yii::t('app','Status'),
             'created_at' => Yii::t('app', 'Created At'),
+            'verifyCode' => Yii::t('app', 'Verify Code'),
+
         ];
     }
 

@@ -9,11 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property int created_at
- * @property int updated_at
- * @property int created_by
- * @property int updated_by
- * @property int status
  */
 class Tags extends \yii\db\ActiveRecord
 {
@@ -45,5 +40,16 @@ class Tags extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
         ];
+    }
+
+
+    public function getSitesTags()
+    {
+        return $this->hasMany(TagsAndSites::class, ['tag_id' => 'id']);
+    }
+
+    public function getSites()
+    {
+        return $this->hasMany(Sites::class, ['id' => 'site_id'])->viaTable('tags_and_sites', ['tag_id' =>  'id']);
     }
 }

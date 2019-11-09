@@ -22,6 +22,16 @@ services:
       # Mount source-code for development
       - ./:/app
 
+  storage:
+    build: storage
+    ports:
+       - 22080:80
+    volumes:
+            # Re-use local composer cache via host-volume
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+            # Mount source-code for development
+            - ./:/app
+
   mysql:
     image: mysql:5.7
     ports:
@@ -31,6 +41,8 @@ services:
       - MYSQL_DATABASE=sayti.uz
       - MYSQL_USER=root
       - MYSQL_PASSWORD=secret
+    volumes:
+      - ./:/app
 
   #pgsql:
   #  image: postgres:9.5

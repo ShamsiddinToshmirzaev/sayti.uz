@@ -78,6 +78,10 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
+//        $sites = Sites::find()->one()->getTagSites()->with('idSites')->with('idTags')->asArray()->all();
+//       var_dump($sites);
+
+
         $provider = new ActiveDataProvider([
             'query' => Sites::find(),
             'pagination' => [
@@ -89,8 +93,11 @@ class SiteController extends Controller
         return $this->render('index',
             ["provider" => $provider]
         );
+//
+//        return $this->render('index',[
+//            'sites'=> $sites,
+//        ]);
 
-//        return $this->render('index');
     }
 
     /**
