@@ -118,7 +118,7 @@ class ContactsController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Contact::findOne($id)) !== null) {
+        if (($model = Contacts::findOne($id)) !== null) {
             return $model;
         }
 
