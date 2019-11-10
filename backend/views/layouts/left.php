@@ -41,6 +41,12 @@
 <span class="pull-right-container"><small class="label pull-right bg-blue">'
                         . \backend\models\TagsAndSites::find()->count() . '</small></span></a>'],
 
+//                    For CMS
+                    ['label' => Yii::t('app','Pages'), 'icon' => 'th-list', 'url' => ['/cms/pages/index']],
+                    ['label' => Yii::t('app','Article Categories'), 'icon' => 'th-list', 'url' => ['/cms/article-categories/index']],
+                    ['label' => Yii::t('app','Articles'), 'icon' => 'th-list', 'url' => ['/cms/articles/index']],
+                    ['label' => Yii::t('app','Menu'), 'icon' => 'th-list', 'url' => ['/cms/menu/index']],
+
                 ],
             ]
         ) ?>

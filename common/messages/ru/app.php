@@ -47,4 +47,13 @@ return [
     'Thank you for contacting us. We will respond to you as soon as possible.' => 'Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.',
     'There was an error sending email.' => 'При отправке электронной почты произошла ошибка.',
 
+
+//    CMS
+
+    'Pages' => 'Страницы',
+    'Article Categories' => 'Категории статей',
+    'Articles' => 'Статьи',
+    'Menu' => 'Меню',
+
+
 ];

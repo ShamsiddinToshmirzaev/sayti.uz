@@ -1,6 +1,6 @@
 <?php
 return [
-    'storagePath' => dirname(__DIR__, 2) . '/storage',
+    'staticPath' => dirname(__DIR__, 2) . '/storage',
     'adminEmail' => 'admin@example.com',
     'supportEmail' => 'support@example.com',
     'senderEmail' => 'noreply@example.com',

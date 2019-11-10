@@ -14,7 +14,10 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+
+    ],
+
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -48,14 +51,25 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+//        'urlManager' => [
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'rules' => [
+//            ],
+//        ],
+
+    ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+                'baseUrl' => $params['storageHostInfo'],
+                'basePath' => '@storage',
+                'path' => 'elfinder-files',
+                'name' => 'Files',
             ],
         ],
-        */
     ],
     'as access' => [
         'class' => AccessControl::class,
@@ -66,7 +80,7 @@ return [
                 'roles' => ['@']
             ],
         ],
-    ],
 
+    ],
     'params' => $params,
 ];
