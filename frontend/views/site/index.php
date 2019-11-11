@@ -98,17 +98,15 @@ use yii\widgets\LinkPager;
                     <?php foreach ($provider->getModels() as $site): ?>
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
-                                <img src="<?php $site->getThumbFileUrl('photo', 'md', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]')); ?>"
-                                     alt="">
+                                <img src="<?= $site->getImageFileUrl('photo', Yii::getAlias('@url/app-images/cache/sites/[[attribute_id]]/[[profile]]_[[filename]].[[extension]]')) ;?>" alt="">
                                 <div class="card-body">
                                     <p><?= $site['title'] ?></p>
                                     <?php
-                                    if ($site['is_taxis'] == true) {
+                                    if ($site['is_taxis'] == true){
                                         echo ' <span class="tasIx">Tas-IX</span>';
                                     }
                                     ?>
-                                    <span class="float-right counter"><i
-                                                class="far fa-share-square"></i><?= $site['views'] ?></span>
+                                    <span class="float-right counter"><i class="far fa-share-square"></i><?= $site['views'] ?></span>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
@@ -156,15 +154,16 @@ use yii\widgets\LinkPager;
 
                     <div class="col-md-12">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i
-                                            class="fas fa-chevron-left fa-md"></i></a></li>
-                            <?php
+                            <!--                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i-->
+                            <!--                                            class="fas fa-chevron-left fa-md"></i></a></li>-->
+                            <?=
                             LinkPager::widget([
                                 'pagination' => $provider->pagination,
                             ])
                             ?>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i
-                                            class="fas fa-chevron-right fa-md"></i></a></li>
+                            <!--                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i-->
+                            <!--                                            class="fas fa-chevron-right fa-md"></i></a></li>-->
+
 
                         </ul>
                     </div>
