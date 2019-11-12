@@ -64,63 +64,39 @@ use yii\helpers\Url;
 </div>
 
 
-<section>
-    <div class="container" style="margin-top: 20px;
-    background-color: #F7F7F7; max-width: 100%;">
+<section style="margin-top: 20px;
+    background-color: #F7F7F7;">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="text-center upperCase mt-4 mb-4">Обратная связь</h3>
             </div>
-
-            <div class="contacts container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php $form = ActiveForm::begin(); ?>
-
-                        <?= $form->field($model, 'full_name')->textInput() ?>
-
-                        <?= $form->field($model, 'email_phone')->textInput() ?>
-
-                        <?= $form->field($model, 'message')->textArea(array('rows' => 5)) ?>
-
-                        <?=
-                        $form->field($model, 'verifyCode')->label(false)->widget(Captcha::class, ['captchaAction' => 'site/captcha',
-                            'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>',
-                            'options' => ['class' => 'form-control', 'placeholder' => Yii::t('app', 'Verify Code')],
-                        ])
-                        ?>
-
-                        <div class="form-group" style="align-content: center">
-                            <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary pull-center;']) ?>
+            <div class="col-md-12">
+                <?php $form = ActiveForm::begin(); ?>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?= $form->field($model, 'full_name')->textInput() ?>
                         </div>
-
-                        <?php ActiveForm::end(); ?>
+                        <div class="col-md-6">
+                            <?= $form->field($model, 'email_phone')->textInput() ?>
+                        </div>
                     </div>
-
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'message')->textArea(array('rows' => 5)) ?>
+                </div>
+                <?=
+                $form->field($model, 'verifyCode')->label(false)->widget(Captcha::class, ['captchaAction' => 'site/captcha',
+                    'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>',
+                    'options' => ['class' => 'form-control', 'placeholder' => Yii::t('app', 'Verify Code')],
+                ])
+                ?>
+                <div class="form-group" style="align-content: center">
+                    <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary d-block mx-auto mb-4;']) ?>
                 </div>
             </div>
-            <br>
-            <br><br/>
-
-            <!--            <div class="col-md-12">-->
-            <!--                <form action="">-->
-            <!--                    <div class="form-group">-->
-            <!--                        <div class="row">-->
-            <!--                            <div class="col-md-6">-->
-            <!--                                <input type="text" class="form-control mb-lg-0 mb-3" id="usr" name="username" placeholder="Ф.И.О">-->
-            <!--                            </div>-->
-            <!--                            <div class="col-md-6">-->
-            <!--                                <input type="text" class="form-control" id="usr" name="username" placeholder="Номер телефона">-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                    <div class="form-group">-->
-            <!--                        <textarea class="form-control" rows="5" id="comment" placeholder="Сообщение"></textarea>-->
-            <!--                    </div>-->
-            <!--                    <button type="submit" class="btn btn-primary d-block mx-auto mb-4">Отправить</button>-->
-            <!--                </form>-->
-            <!--            </div>-->
-
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
 </section>
