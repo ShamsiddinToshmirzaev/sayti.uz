@@ -24,43 +24,38 @@ use yii\captcha\Captcha;
                     </ol>
                 </nav>
             </div>
+
             <div class="col-md-12">
                 <h3 class="text-center upperCase">Блог</h3>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="blogInfos">
-                        <img src="/img/w3schools.PNG" style="width: 555px; height: 303.5px" alt="W3schools.com">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h4 class="text-center">Сегодняшние сайты становятся </h4>
-                        <p>Сегодняшние сайты становятся все лучше и лучше в adsda sdsa d as d as das
-                            dasразработке.adasdkashdjkasasdasdasdasdasdasdaasd asd as da sd ada sdasd
-                            dasdaa da sd asd as dasdas dasd adasdsadasqwe wwetertertwef fw fwe r23423 rwe rerwerwer
-                            we.</p>
-                        <p><span class="calendarColor"><i class="far fa-calendar-alt"> </i>   12.06.2019</span><span
-                                    class="float-right calendarColor"><i class="far fa-eye"> 11231231</i> </span></p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blogInfos">
 
-                        <img src="/img/w3schools.PNG" style="width: 555px; height: 303.5px" alt="W3schools.com">
+
+            <?php
+            foreach ($blogs as $blog):
+                ?>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="blogInfos">
+                            <img src="<?= $blog->getImageFileUrl('photo', Yii::getAlias('@storageHostInfo/data/articles/[[attribute_id]]/[[filename]].[[extension]]')); ?>"
+                                 style="width: 555px; height: 303.5px" alt="W3schools.com">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card-body">
-                        <h4 class="text-center">Сегодняшние сайты становятся </h4>
-                        <p>Сегодняшние сайты становятся все лучше и лучше в разработке.adasdkashdjkas
-                            dasdaa da sd asd as dasdas dasd adasdsadasqwe wwetertertwef fw fwe r23423 rwe rerwerwer
-                            we.</p>
-                        <p><span class="calendarColor"><i class="far fa-calendar-alt"> </i>   12.06.2019</span><span
-                                    class="float-right calendarColor"><i class="far fa-eye"> 11231231</i> </span></p>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h4 class="text-center"><?= $blog['title_0']; ?></h4>
+                            <p><?= $blog['content_0']; ?></p>
+                            <p><span class="calendarColor"><i class="far fa-calendar-alt"></i><?= $blog['date']; ?></span><span class="float-right calendarColor"><i class="far fa-eye">11231231</i> </span>
+                            </p>
+                        </div>
                     </div>
+
                 </div>
-            </div>
+
+
+            <?php
+            endforeach;
+            ?>
 
         </div>
     </div>

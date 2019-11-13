@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use abdualiym\cms\entities\Articles;
 use backend\models\Contacts;
 use backend\models\Sites;
 use frontend\models\ResendVerificationEmailForm;
@@ -166,7 +167,11 @@ class SiteController extends Controller
 
     public function actionBlog()
     {
-        return $this->render('blog');
+        $blogs = Articles::find()->all();
+
+        return $this->render('blog',[
+            'blogs' => $blogs,
+        ]);
     }
 
 
