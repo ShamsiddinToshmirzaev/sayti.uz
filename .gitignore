@@ -45,6 +45,8 @@ phpunit.phar
 /backend/web/.htaccess
 /frontend/web/.htaccess
 /storage/.htaccess
+/storage/data
+/storage/cache
 
 composer.lock
 yii.bat
