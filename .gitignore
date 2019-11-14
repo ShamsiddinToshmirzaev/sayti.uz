@@ -48,6 +48,9 @@ phpunit.phar
 /storage/data
 /storage/cache
 
+/frontend/web/app-images/cache
+/frontend/web/app-images/store
+
 composer.lock
 yii.bat
 LICENSE.md
