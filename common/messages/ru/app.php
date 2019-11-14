@@ -48,6 +48,13 @@ return [
     'Thank you for contacting us. We will respond to you as soon as possible.' => 'Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.',
     'There was an error sending email.' => 'При отправке электронной почты произошла ошибка.',
 
+    'The requested page does not exist.' => 'Запрашиваемая страница не существует.',
+    'Domain' => 'Домен',
+    'Description' => 'Описание',
+    'Registrar' => 'Регистратор',
+    'Expires At' => 'Истекает',
+
+
 
 //    CMS
 

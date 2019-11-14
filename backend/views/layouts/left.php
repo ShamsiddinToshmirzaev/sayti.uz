@@ -47,6 +47,8 @@
                     ['label' => Yii::t('app','Articles'), 'icon' => 'th-list', 'url' => ['/cms/articles/index']],
                     ['label' => Yii::t('app','Menu'), 'icon' => 'th-list', 'url' => ['/cms/menu/index']],
 
+                    ['label' => Yii::t('app','Parsers'), 'icon' => 'bookmark', 'url' => ['/parsers/index']],
+
                 ],
             ]
         ) ?>
