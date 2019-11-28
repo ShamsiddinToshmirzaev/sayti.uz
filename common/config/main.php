@@ -51,9 +51,18 @@ return [
                 'thumb' => ['width' => 320, 'height' => 320],
             ],
             'languages' => [
-                0 => 'Русский', // default language
-                1 => 'English',
-                2 => 'O`zbek tili',
+                'ru' => [
+                    'id' => 0,
+                    'name' => 'Русский',
+                ],
+                'uz' => [
+                    'id' => 1,
+                    'name' => 'O`zbek tili',
+                ],
+            ],
+            'menuActions' => [ // for add to menu controller actions
+                '' => 'Home',
+                'site/contacts' => 'Contacts',
             ]
         ],
     ],

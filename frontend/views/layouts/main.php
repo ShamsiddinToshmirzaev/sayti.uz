@@ -12,9 +12,9 @@ AppAsset::register($this);
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="Testtoday test markazi">
-        <meta name="description" content="Testtoday tayyorlaov markazi veb sayti">
-        <meta name="author" content="testtoday.uz">
+        <meta name="keywords" content="sayti.uz">
+        <meta name="description" content="veb sayti">
+        <meta name="author" content="sayti.uz">
         <?php $this->head() ?>
         <?= Html::csrfMetaTags() ?>
         <title>Sayti.uz |</title>
@@ -66,7 +66,7 @@ AppAsset::register($this);
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <button type="button" class="close" data-dismiss="mxodal">×</button>
                                     <input type="text" placeholder="Что вы ищете?" class="form-control p-4">
                                 </div>
                             </div>
@@ -74,6 +74,8 @@ AppAsset::register($this);
                     </div>
                 </li>
             </ul>
+
+            <?= \frontend\widgets\MenuWidget::widget() ; ?>
     </nav>
     <!-- end of navbar -->
 
